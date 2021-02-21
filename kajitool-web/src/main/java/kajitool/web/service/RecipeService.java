@@ -1,6 +1,7 @@
 package kajitool.web.service;
 
 import kajitool.web.domain.model.Recipe;
+import kajitool.web.service.recipe.RecipeValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ public class RecipeService {
     private final Map<Long, Recipe> map = new ConcurrentHashMap<>();
 
     public Recipe create(final Recipe recipe) {
+        RecipeValidator.validateOnCreate(recipe);
         recipe.setId(sequence.incrementAndGet());
         map.put(recipe.getId(), recipe);
         return recipe;
@@ -23,7 +25,9 @@ public class RecipeService {
     public Optional<Recipe> findById(final long id) {
         return Optional.ofNullable(map.get(id));
     }
+
     public Recipe save(final Recipe recipe) {
+        RecipeValidator.validateOnCreate(recipe);
         return map.replace(recipe.getId(), recipe);
     }
     public void remove(final long id, final int version) {

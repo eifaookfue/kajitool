@@ -5,4 +5,12 @@ public class RecipeDetail {
     private long recipeId;
     private long materialId;
     private int quantity;
+
+    public Long getId() {
+        return id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }
