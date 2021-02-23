@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'net.ltgt.apt' version '0.20'
 }
 
 group = 'kajitool'
@@ -19,10 +20,14 @@ dependencies {
 	implementation 'am.ik.yavi:yavi:0.2.2'
 	implementation 'org.springframework.security:spring-security-oauth2-client'
 	implementation 'org.springframework.security:spring-security-oauth2-jose'
+	implementation project(":kajitool-dao")
+	implementation 'org.mapstruct:mapstruct:1.2.0.Final'
+	implementation 'org.mapstruct:mapstruct-jdk8:1.2.0.Final'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.h2database:h2:1.4.197'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.2.0.Final'
 }
 
 test {

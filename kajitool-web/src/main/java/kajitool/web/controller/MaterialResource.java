@@ -1,7 +1,7 @@
 package kajitool.web.controller;
 
 import kajitool.web.domain.model.Material;
-import kajitool.web.service.MaterialService;
+import kajitool.web.service.material.MaterialService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
