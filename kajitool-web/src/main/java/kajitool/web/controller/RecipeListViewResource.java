@@ -1,5 +1,6 @@
 package kajitool.web.controller;
 
+import io.swagger.annotations.ApiOperation;
 import kajitool.web.domain.model.RecipeListView;
 import kajitool.web.service.recipelist.RecipeListViewService;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ public class RecipeListViewResource {
         this.service = service;
     }
     @GetMapping("")
+    @ApiOperation(value = "レシピ一覧を返します。", nickname = "recipeListView_getAll")
     public ResponseEntity<List<RecipeListView>> getAll() {
         return ResponseEntity.ok(service.findAll());
     }
