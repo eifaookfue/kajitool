@@ -9,10 +9,14 @@ import kajitool.web.domain.model.Recipe;
 import kajitool.web.domain.model.RecipeDetail;
 import kajitool.web.service.common.ServiceException;
 import kajitool.web.service.common.ServiceMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.stream.Collectors;
 
 public final class RecipeValidator {
+
+    private static final Logger logger = LoggerFactory.getLogger(RecipeValidator.class);
 
     private enum Group implements ConstraintGroup {
         CREATE,
@@ -53,6 +57,8 @@ public final class RecipeValidator {
 
     private static ServiceException toServiceException(
             final ConstraintViolations v) {
+        logger.info("violations");
+        v.forEach(w -> logger.warn(w.toString()));
         ServiceMessage msg = new ServiceMessage(
                 "validation",
                 "validation failed",

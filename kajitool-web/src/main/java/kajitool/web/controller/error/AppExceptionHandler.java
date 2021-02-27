@@ -2,6 +2,7 @@ package kajitool.web.controller.error;
 
 import kajitool.web.service.common.ServiceException;
 import kajitool.web.service.common.ServiceMessage;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,5 +33,14 @@ public class AppExceptionHandler extends ResponseEntityExceptionHandler {
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 request);
     }
-
+    @ExceptionHandler(OptimisticLockingFailureException.class)
+    public ResponseEntity<Object> handleOptimistickLocingFailureException(
+            final OptimisticLockingFailureException ex, final WebRequest request) {
+        return super.handleExceptionInternal(
+                ex,
+                new ServiceMessage("error", "Optimistic error."),
+                null,
+                HttpStatus.BAD_REQUEST,
+                request);
+    }
 }

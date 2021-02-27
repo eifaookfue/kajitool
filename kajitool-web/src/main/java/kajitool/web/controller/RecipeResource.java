@@ -1,7 +1,7 @@
 package kajitool.web.controller;
 
 import kajitool.web.domain.model.Recipe;
-import kajitool.web.service.RecipeService;
+import kajitool.web.service.recipe.RecipeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
