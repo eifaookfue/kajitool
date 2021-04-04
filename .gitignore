@@ -6,3 +6,4 @@
 *.ipr
 out/
 kajitool-h2db/
+kajitool-api/build/typescript-angular/dist.tgz
