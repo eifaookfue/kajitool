@@ -11,6 +11,9 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+  },
   // {
   //   path: 'select-recipe',
   //   loadChildren: () => import('./pages/select-recipe/select-recipe.module').then( m => m.SelectRecipePageModule)
