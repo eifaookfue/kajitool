@@ -4,6 +4,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { RecipeService } from './services/recipe.service';
 import { MaterialService } from './services/material.service';
+import { AccountService } from './services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+    public accountService: AccountService,
     public materialService: MaterialService,
     public recipeService: RecipeService
   ) {
@@ -25,8 +27,14 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.accountService.init();
       this.materialService.init();
       this.recipeService.init();
     } )
   }
+
+  goLogin() {
+    location.href = 'oauth2/authorization/github';
+  }
+
 }
