@@ -18,7 +18,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../pages/select-recipe/select-recipe.module#SelectRecipePageModule'
+            loadChildren: () => import('../pages/select-recipe/select-recipe.module').then( m => m.SelectRecipePageModule)
           }
         ]
       },
@@ -27,7 +27,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../pages/need-material/need-material.module#NeedMaterialPageModule'
+            loadChildren: () => import('../pages/need-material/need-material.module').then( m => m.NeedMaterialPageModule)
           }
         ]
       },
