@@ -102,8 +102,8 @@
                 "tags": [
                     "recipe-resource"
                 ],
-                "summary": "\u30ec\u30b7\u30d4\u3092\u8fd4\u3057\u307e\u3059\u3002",
-                "operationId": "recipe_get",
+                "summary": "\u30ec\u30b7\u30d4\u3092\u4f5c\u6210\u3057\u307e\u3059\u3002",
+                "operationId": "recipe_create",
                 "consumes": [
                     "application/json"
                 ],
@@ -191,7 +191,7 @@
                     "recipe-resource"
                 ],
                 "summary": "ID\u306e\u30ec\u30b7\u30d4\u3092\u8fd4\u3057\u307e\u3059\u3002",
-                "operationId": "recipe_get_1",
+                "operationId": "recipe_get",
                 "produces": [
                     "*/*"
                 ],

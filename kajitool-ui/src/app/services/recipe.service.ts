@@ -38,15 +38,17 @@ export class RecipeService {
 
   async getNeedMaterial(): Promise<NeedMaterialModel[]> {
 
+
     const obRecipes: Observable<Recipe>[] = this.recipeList
       .filter(recipe => recipe.selected && recipe.orderQuantity > 0)
       .map(recipe => {
-        return this.recipeResource.get1(recipe.id);
-      });
-      const recipes: Recipe[] = await merge(...obRecipes).pipe(toArray()).toPromise();
+        return this.recipeResource.get(recipe.id);
+      })
 
-      this.needMaterial = this.buildNeedMaterial(recipes);
-      return this.needMaterial;
+    const recipes: Recipe[] = await merge(...obRecipes).pipe(toArray()).toPromise();
+
+    this.needMaterial = this.buildNeedMaterial(recipes);
+    return this.needMaterial;
   }
 
   private buildNeedMaterial(recipes: Recipe[]): NeedMaterialModel[] {
@@ -72,5 +74,34 @@ export class RecipeService {
     return needMaterial;
   }
 
+  newRecipe(): Recipe {
+    return {
+      id: null,
+      name: '',
+      recipeDetails: [],
+      updatedAt: null,
+      version: null
+    };
+  }
+
+  async get(id: number): Promise<Recipe> {
+    return this.recipeResource.get(id).toPromise();
+  }
+
+  async create(recipe: Recipe): Promise<any> {
+    return await this.recipeResource.create(recipe).toPromise();
+  }
+
+  async save(recipe: Recipe): Promise<any> {
+    return await this.recipeResource.save(recipe).toPromise();
+  }
+
+  async remove(recipe: Recipe): Promise<any> {
+    await this.recipeResource.remove(recipe.id, recipe.version).toPromise();
+    const index = this.recipeList.findIndex(v => v.id === recipe.id);
+    if (index !== -1) {
+      this.recipeList.splice(index, 1);
+    }
+  }
 
 }

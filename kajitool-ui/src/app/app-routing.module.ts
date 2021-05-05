@@ -3,16 +3,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   // {
   //   path: 'select-recipe',
@@ -23,7 +20,7 @@ const routes: Routes = [
   //   loadChildren: () => import('./pages/need-material/need-material.module').then( m => m.NeedMaterialPageModule)
   // },
   {
-    path: 'edit-recipe',
+    path: 'edit-recipe/:id',
     loadChildren: () => import('./pages/edit-recipe/edit-recipe.module').then( m => m.EditRecipePageModule)
   },
 ];
