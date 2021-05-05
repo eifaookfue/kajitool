@@ -18,7 +18,7 @@ public class RecipeResource {
         this.service = service;
     }
     @PostMapping("/create")
-    @ApiOperation(value = "レシピを返します。", nickname = "recipe_get")
+    @ApiOperation(value = "レシピを作成します。", nickname = "recipe_create")
     public ResponseEntity<Void> create(@RequestBody final Recipe recipe) {
         Recipe created = service.create(recipe);
         return ResponseEntity.created(

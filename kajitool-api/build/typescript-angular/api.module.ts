@@ -11,10 +11,10 @@ import { RecipeResourceService } from './api/recipeResource.service';
   imports:      [],
   declarations: [],
   exports:      [],
-  providers: []
+  providers: [AccountResourceService, MaterialResourceService, RecipeListViewResourceService, RecipeResourceService]
 })
 export class ApiModule {
-    public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders {
+    public static forRoot(configurationFactory: () => Configuration): ModuleWithProviders<ApiModule> {
         return {
             ngModule: ApiModule,
             providers: [ { provide: Configuration, useFactory: configurationFactory } ]
